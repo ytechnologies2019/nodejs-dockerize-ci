@@ -29,7 +29,7 @@ pipeline {
         stage('DockerPush') {
             steps {
                 // sh 'docker login -u $DOCKERHUB_LOGIN_USR -p $DOCKERHUB_LOGIN_PSW'
-                sh 'docker push'  
+                sh 'docker push thihathura/node'  
             }
         }
     }
