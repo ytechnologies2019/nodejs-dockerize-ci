@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                 sh 'echo "123abc!" | sudo -S ls /root'
+                 sh 'sudo ls /root'
             }
         }
         stage('Test') {
