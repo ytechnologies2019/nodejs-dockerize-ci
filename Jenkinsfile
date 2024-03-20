@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_CRED = credentials('DOCKERHUB')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -15,6 +19,11 @@ pipeline {
         stage('ImageBuild') {
             steps {
                 sh 'docker commit -m "node" -a "node" node thihathura/node'
+            }
+        }
+        stage('ImagePush') {
+            steps {
+                echo ${DOCKER_CRED}
             }
         }
     }
