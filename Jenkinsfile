@@ -23,7 +23,7 @@ pipeline {
         }
         stage('ImagePush') {
             steps {
-                echo ${DOCKER_CRED}
+                echo '${DOCKER_CRED}'
             }
         }
     }
