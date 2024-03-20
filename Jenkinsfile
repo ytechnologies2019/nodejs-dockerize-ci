@@ -17,5 +17,10 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        post { 
+            always { 
+                sh 'sudo docker stop node && docker system prune -fa'
+            }
+        }
     }
 }
