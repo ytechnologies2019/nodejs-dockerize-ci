@@ -20,11 +20,14 @@ pipeline {
                 sh 'docker commit -m "node" -a "node" node thihathura/node'
             }
         }
-        stage('ImagePush') {
+        stage('DockerLogin') {
             steps {
                 // sh 'docker login -u $DOCKERHUB_LOGIN_USR -p $DOCKERHUB_LOGIN_PSW'
-                sh 'echo $DOCKERHUB_LOGIN_PSW | sudo docker login -u $DOCKERHUB_LOGIN_USR --password-stdin && sudo docker push thihathura/node'  
+                sh 'echo $DOCKERHUB_LOGIN_PSW | sudo docker login -u $DOCKERHUB_LOGIN_USR --password-stdin'  
             }
+        }
+        stage ('ImagePush') {
+            sh 'sudo docker push thihathura/node'
         }
     }
         post { 
