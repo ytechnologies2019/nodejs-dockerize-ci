@@ -7,9 +7,9 @@ pipeline {
                  sh 'sudo docker build -t node .'
             }
         }
-        stage('Test') {
+        stage('RUN') {
             steps {
-                sh 'ls'
+                sh 'docker run -dp 3000:3000 --name node'
             }
         }
         stage('Deploy') {
