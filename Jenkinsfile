@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {     
-        DOCKERHUB_CREDENTIALS= credentials('DOCKERHUB')     
+        DOCKERHUB_LOGIN= credentials('DOCKERHUB')     
     } 
 
     stages {
@@ -22,14 +22,15 @@ pipeline {
         }
         stage('ImagePush') {
             steps {
-                // sh 'docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'  
+                // sh 'docker login -u $DOCKERHUB_LOGIN_USR -p $DOCKERHUB_LOGIN_PSW'
+                sh 'echo $DOCKERHUB_LOGIN_PSW | sudo docker login -u $DOCKERHUB_LOGIN_USR --password-stdin'  
             }
         }
     }
         post { 
             always { 
                 sh 'sudo docker stop node && sudo docker rm node'
+                sh 'docker logout'
             }
         }
 }
