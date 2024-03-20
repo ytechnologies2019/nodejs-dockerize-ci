@@ -26,8 +26,11 @@ pipeline {
                 sh 'echo $DOCKERHUB_LOGIN_PSW | sudo docker login -u $DOCKERHUB_LOGIN_USR --password-stdin'  
             }
         }
-        stage ('ImagePush') {
-            sh 'sudo docker push thihathura/node'
+        stage('ImagePush') {
+            steps {
+                // sh 'docker login -u $DOCKERHUB_LOGIN_USR -p $DOCKERHUB_LOGIN_PSW'
+                sh 'sudo docker push'  
+            }
         }
     }
         post { 
