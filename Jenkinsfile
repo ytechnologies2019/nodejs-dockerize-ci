@@ -12,15 +12,15 @@ pipeline {
                 sh 'sudo docker run -dp 3000:3000 --name node node'
             }
         }
-        stage('Deploy') {
+        stage('Image Create') {
             steps {
-                echo 'Deploying....'
+                sh 'docker commit -m "node" -a "node" node thihathura/node'
             }
         }
     }
         post { 
             always { 
-                sh 'sudo docker stop node && sudo docker system prune -fa'
+                sh 'sudo docker stop node && sudo docker rm node'
             }
         }
 }
