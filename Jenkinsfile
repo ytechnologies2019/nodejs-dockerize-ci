@@ -12,7 +12,7 @@ pipeline {
                 sh 'sudo docker run -dp 3000:3000 --name node node'
             }
         }
-        stage('Image Create') {
+        stage('ImageBuild') {
             steps {
                 sh 'docker commit -m "node" -a "node" node thihathura/node'
             }
