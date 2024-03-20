@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t nodejs .'
+                sh 'sudo docker build -t nodejs .'
             }
         }
         stage('Test') {
