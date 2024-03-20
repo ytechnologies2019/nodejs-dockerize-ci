@@ -23,7 +23,7 @@ pipeline {
         }
         stage('ImagePush') {
             steps {
-                sh 'docker push thihathura/node'
+                sh 'docker login -u $DOCKERHUB_CREDS_USR -p $DOCKERHUB_CREDS_PSW '
             }
         }
     }
