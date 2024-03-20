@@ -32,11 +32,11 @@ pipeline {
                 sh 'sudo docker push thihathura/node'  
             }
         }
+    }
         post { 
             always { 
                 sh 'sudo docker stop $(docker ps -aq) && docker system prune -fa'
                 sh 'docker logout'
             }
         }
-    }
 }
