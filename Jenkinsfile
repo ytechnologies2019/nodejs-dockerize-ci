@@ -23,7 +23,7 @@ pipeline {
         stage('ImagePush') {
             steps {
                 // sh 'docker login -u $DOCKERHUB_LOGIN_USR -p $DOCKERHUB_LOGIN_PSW'
-                sh 'echo $DOCKERHUB_LOGIN_PSW | sudo docker login -u $DOCKERHUB_LOGIN_USR --password-stdin'  
+                sh 'echo $DOCKERHUB_LOGIN_PSW | sudo docker login -u $DOCKERHUB_LOGIN_USR`1 --password-stdin'  
             }
         }
     }
