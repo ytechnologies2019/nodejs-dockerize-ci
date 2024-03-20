@@ -9,7 +9,7 @@ pipeline {
         }
         stage('RUN') {
             steps {
-                sh 'docker run -dp 3000:3000 --name node'
+                sh 'docker run -dp 3000:3000 --name node node'
             }
         }
         stage('Deploy') {
