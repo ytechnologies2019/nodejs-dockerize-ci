@@ -29,14 +29,14 @@ pipeline {
         stage('ImagePush') {
             steps {
                 // sh 'docker login -u $DOCKERHUB_LOGIN_USR -p $DOCKERHUB_LOGIN_PSW'
-                sh 'sudo docker push'  
+                sh 'sudo docker push thihathura/node'  
             }
         }
-    }
         post { 
             always { 
-                sh 'sudo docker stop node && sudo docker rm node'
+                sh 'sudo docker stop $(docker ps -aq) && docker system prune -fa'
                 sh 'docker logout'
             }
         }
+    }
 }
