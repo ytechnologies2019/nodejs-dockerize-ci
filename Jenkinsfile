@@ -20,7 +20,7 @@ pipeline {
     }
         post { 
             always { 
-                sh 'sudo docker stop node && docker system prune -fa'
+                sh 'sudo docker stop node && sudo docker system prune -fa'
             }
         }
 }
