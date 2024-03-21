@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -16,8 +18,6 @@ app.get('/public', function(req, res) {
 app.get('/register', function(req, res) {
   res.sendFile(path.join(__dirname, './register.html'));
 });
-
-
 
 app.listen(port, () => {
   console.log('Server started at http://localhost:' + port);
