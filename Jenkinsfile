@@ -32,6 +32,11 @@ pipeline {
                 sh 'sudo docker push thihathura/node'  
             }
         }
+        stage('scan_image') {
+            steps {
+                build 'image_scan'
+            }
+        }
     }
         post { 
             always { 
@@ -40,3 +45,17 @@ pipeline {
             }
         }
 }
+
+// For Sonarqube
+// pipeline {
+//     agent any
+
+//     stages {
+//         stage('Trivy Scan') {
+//             steps {
+//                 sh 'trivy image thihathura/node'
+//             }
+//         }
+//     }
+// }
+
