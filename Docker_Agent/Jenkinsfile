@@ -7,20 +7,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                 sh 'docker build -t node .'
+                 sh 'ls -al'
             }
         }
 
-        stage('Run') {
-            steps {
-                sh 'docker run -dp 3000:3000 --name node node'
-            }
-        }
-        stage('ImageBuild') {
-            steps {
-                sh 'docker commit -m "node" -a "node" node thihathura/node'
-                sh 'hostname'
-            }
-        }
+        // stage('Run') {
+        //     steps {
+        //         sh 'docker run -dp 3000:3000 --name node node'
+        //     }
+        // }
+        // stage('ImageBuild') {
+        //     steps {
+        //         sh 'docker commit -m "node" -a "node" node thihathura/node'
+        //         sh 'hostname'
+        //     }
+        // }
     }
 }
