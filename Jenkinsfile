@@ -32,6 +32,8 @@ pipeline {
                 sh 'sudo docker push thihathura/node'  
             }
         }
+    stage ('scan_and_clear') {
+        parallel {
         stage('scan_image') {
             steps {
                 build 'image_scan'
@@ -44,6 +46,8 @@ pipeline {
                 sh 'docker logout'
             }
         }
+      }
+    }
 }
 
 
