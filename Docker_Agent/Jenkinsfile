@@ -7,7 +7,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ls -alht'
+                 sh 'sudo docker build -t node .'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                sh 'sudo docker run -dp 3000:3000 --name node node'
+            }
+        }
+        stage('ImageBuild') {
+            steps {
+                sh 'docker commit -m "node" -a "node" node thihathura/node'
                 sh 'hostname'
             }
         }
