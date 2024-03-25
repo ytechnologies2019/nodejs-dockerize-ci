@@ -33,7 +33,10 @@ pipeline {
             }
         }
 
-    stage ('scan_and_clear') {
+    stage ('scan_and_clear') {  
+    input {
+            message "Should we continue?"
+                }
         parallel {
         stage('scan_image') {
             steps {
