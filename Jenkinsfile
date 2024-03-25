@@ -32,6 +32,7 @@ pipeline {
                 sh 'sudo docker push thihathura/node'  
             }
         }
+
     stage ('scan_and_clear') {
         parallel {
         stage('scan_image') {
@@ -41,6 +42,7 @@ pipeline {
         }
     }
         post { 
+            input message: 'Do you want to wipeout all?'
             always { 
                 sh 'sudo docker stop $(docker ps -aq) && docker system prune -fa'
                 sh 'docker logout'
