@@ -44,6 +44,7 @@ pipeline {
             }
         }
     }
+    //wipeout all after deployment
         post { 
             always { 
                 sh 'sudo docker stop $(docker ps -aq) && docker system prune -fa'
