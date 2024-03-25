@@ -34,6 +34,7 @@ pipeline {
         }
 
     stage ('scan_and_clear') {
+        input message: 'Do you want to wipeout all?'
         parallel {
         stage('scan_image') {
             steps {
@@ -42,7 +43,6 @@ pipeline {
         }
     }
         post { 
-            input message: 'Do you want to wipeout all?'
             always { 
                 sh 'sudo docker stop $(docker ps -aq) && docker system prune -fa'
                 sh 'docker logout'
