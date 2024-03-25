@@ -34,7 +34,6 @@ pipeline {
         }
 
     stage ('scan_and_clear') {
-        input message: 'Do you want to wipeout all?'
         parallel {
         stage('scan_image') {
             steps {
