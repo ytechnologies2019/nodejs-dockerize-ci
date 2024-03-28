@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo docker build -t node .'
+                sh 'docker build -t node .'
             }
         }
     }
