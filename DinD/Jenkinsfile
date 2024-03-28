@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                sh 'ls -al'
+                sh 'sudo docker build -t node .'
             }
         }
     }
