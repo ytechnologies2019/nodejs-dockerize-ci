@@ -4,7 +4,7 @@ pipeline {
     environment {     
         DOCKERHUB_LOGIN= credentials('DOCKERHUB')     
     } 
-    
+
     stages {
         stage('Build') {
             steps {
@@ -34,7 +34,7 @@ pipeline {
     }
         post { 
             always { 
-                sh 'sudo docker stop $(docker ps -aq) && docker system prune -fa'
+                sh 'docker stop $(docker ps -aq) && docker system prune -fa'
                 sh 'docker logout'
             }
         }
