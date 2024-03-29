@@ -16,5 +16,16 @@ pipeline {
                 sh 'docker commit -m "node" -a "node" node thihathura/node'
             }
         }
+        stage('ImageBuild') {
+            steps {
+                sh 'docker commit -m "node" -a "node" node thihathura/node'
+            }
+        }
+
+        stage('clear') {
+            steps {
+                sh 'docker stop $(docker ps -aq) && docker system prune -fa'
+            }
+        }
     }
 }
