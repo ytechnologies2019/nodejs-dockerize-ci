@@ -16,9 +16,10 @@ pipeline {
                 sh 'docker commit -m "node" -a "node" node thihathura/node'
             }
         }
-        stage('Clear') {
-            steps {
-                sh 'docker stop $(docker ps -aq) && docker system prune -fa'
+        post { 
+            always { 
+                sh 'sudo docker stop $(docker ps -aq) && docker system prune -fa'
+                sh 'docker logout'
             }
         }
     }
