@@ -8,8 +8,8 @@ pipeline {
                     script {
                         sh 'cat $DEPLOY_USER'
                         sh '''
-                        ssh -i $DEPLOY_USER ubuntu@18.116.42.102 "ls -al"
-                        ssh -i $DEPLOY_USER ubuntu@18.116.42.102 "pwd"
+                        ssh -i $DEPLOY_USER ubuntu@18.116.42.102 
+                        ssh -i $DEPLOY_USER ubuntu@18.116.42.102 
                         '''
                     }
                 }
