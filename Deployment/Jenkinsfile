@@ -7,8 +7,8 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'DEPLOY_USER', keyFileVariable: 'DEPLOY_USER')]) {
                     script {
                         sh '''
-                        ssh -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker stop node && sudo docker rm node"
-                        ssh -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker rmi thihathura/node"
+                        ssh -o StrictHostKeyChecking=no -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker stop node && sudo docker rm node"
+                        ssh  -o StrictHostKeyChecking=no -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker rmi thihathura/node"
                         '''
                     }
                 }
