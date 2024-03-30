@@ -19,7 +19,7 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'DEPLOY_USER', keyFileVariable: 'DEPLOY_USER')]) {
                     script {
                         sh '''
-                        ssh -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker pull thihathura/node"
+                        ssh -o StrictHostKeyChecking=no -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker pull thihathura/node"
                         '''
                     }
                 }
@@ -30,7 +30,7 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'DEPLOY_USER', keyFileVariable: 'DEPLOY_USER')]) {
                     script {
                         sh '''
-                        ssh -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker run -dp 3000:3000 --name node thihathura/node"
+                        ssh -o StrictHostKeyChecking=no -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker run -dp 3000:3000 --name node thihathura/node"
                         '''
                     }
                 }
