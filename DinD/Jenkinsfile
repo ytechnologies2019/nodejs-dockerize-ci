@@ -43,6 +43,7 @@ pipeline {
             always { 
                 sh 'docker stop $(docker ps -aq) && docker system prune -fa'
                 sh 'docker logout'
+                build 'deploy'
             }
         }
 }
