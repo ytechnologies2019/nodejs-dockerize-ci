@@ -6,7 +6,7 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'DEPLOY_USER', keyFileVariable: 'DEPLOY_USER')]) {
                     script {
-                        sh 'chown 400 $DEPLOY_USER'
+                        sh 'cat $DEPLOY_USER'
                         sh '''
                         ssh -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker stop node && sudo docker rm node"
                         ssh -i $DEPLOY_USER ubuntu@18.116.42.102 "sudo docker rmi thihathura/node"
